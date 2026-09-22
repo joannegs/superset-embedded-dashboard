@@ -1,0 +1,38 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+dist-ssr
+*.local
+
+# Environment variables (never commit real secrets)
+.env
+.env.*
+!.env.example
+!*/.env.example
+
+# Superset runtime data (bind-mounted, generated at container startup)
+superset/superset_home/
+
+# Postgres data volume (if ever bind-mounted instead of a named volume)
+pgdata/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# TypeScript build info
+*.tsbuildinfo
