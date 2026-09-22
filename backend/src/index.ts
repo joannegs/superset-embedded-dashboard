@@ -12,7 +12,6 @@ app.get('/health', (_req, res) => {
   res.json({ status: 'ok' })
 })
 
-// TODO (Fase 2): montar a rota de guest token (ver src/routes/guestToken.route.ts)
 
 app.listen(PORT, () => {
   console.log(`Backend listening on port ${PORT}`)
