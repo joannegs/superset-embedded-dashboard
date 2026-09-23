@@ -1,13 +1,14 @@
-import { 
+import {
+  SupersetCsrfTokenResponse,
   SupersetGuestTokenResponse,
-  SupersetLoginResponse 
-} from "../interfaces/supersetAuth.interface.js";
+  SupersetLoginResponse,
+} from '../interfaces/supersetAuth.interface.js';
 
 function getSupersetUrl(): string {
   const url = process.env.SUPERSET_URL;
   if (!url) throw new Error('SUPERSET_URL is not set');
   return url;
-};
+}
 
 export async function fetchSupersetAccessToken(): Promise<string> {
   const username = process.env.SUPERSET_ADMIN_USERNAME;
@@ -34,21 +35,41 @@ export async function fetchSupersetAccessToken(): Promise<string> {
 
   const data = (await response.json()) as SupersetLoginResponse;
   return data.access_token;
-};
+}
+
+async function fetchCsrfToken(accessToken: string): Promise<{ csrfToken: string; cookie: string }> {
+  const response = await fetch(`${getSupersetUrl()}/api/v1/security/csrf_token/`, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Superset CSRF token request failed with status ${response.status}`);
+  }
+
+  const data = (await response.json()) as SupersetCsrfTokenResponse;
+  const cookie = (response.headers.getSetCookie?.() ?? [])
+    .map((entry) => entry.split(';')[0])
+    .join('; ');
+
+  return { csrfToken: data.result, cookie };
+}
 
 export async function fetchGuestToken(): Promise<string> {
-  const dashboardId = process.env.SUPERSET_DASHBOARD_ID
+  const dashboardId = process.env.SUPERSET_DASHBOARD_ID;
   if (!dashboardId) {
     throw new Error('SUPERSET_DASHBOARD_ID is not set');
   }
 
   const accessToken = await fetchSupersetAccessToken();
+  const { csrfToken, cookie } = await fetchCsrfToken(accessToken);
 
   const response = await fetch(`${getSupersetUrl()}/api/v1/security/guest_token/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
+      'X-CSRFToken': csrfToken,
+      Cookie: cookie,
     },
     body: JSON.stringify({
       user: {
@@ -67,5 +88,4 @@ export async function fetchGuestToken(): Promise<string> {
 
   const data = (await response.json()) as SupersetGuestTokenResponse;
   return data.token;
-};
-
+}
