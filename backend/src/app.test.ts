@@ -84,4 +84,33 @@ describe('POST /api/guest-token', () => {
     expect(response.status).toBe(502);
     expect(response.body).toEqual({ error: 'Failed to issue guest token' });
   });
+
+  it('returns 200 and scopes the guest token with an RLS clause for an allowed country', async () => {
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(fetchResponse({ access_token: 'admin-token' }))
+      .mockResolvedValueOnce(fetchResponse({ result: 'csrf-xyz' }))
+      .mockResolvedValueOnce(fetchResponse({ token: 'guest-token-xyz' }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    const response = await request(app).post('/api/guest-token').send({ country: 'Brazil' });
+
+    expect(response.status).toBe(200);
+    const guestTokenCall = fetchMock.mock.calls[2] as [string, RequestInit];
+    const body = JSON.parse(guestTokenCall[1].body as string);
+    expect(body.rls).toEqual([{ clause: "country = 'Brazil'" }]);
+  });
+
+  it('returns 400 for a country outside the allow-list, without contacting Superset', async () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal('fetch', fetchMock);
+
+    const response = await request(app)
+      .post('/api/guest-token')
+      .send({ country: "'; DROP TABLE rnd_indicators; --" });
+
+    expect(response.status).toBe(400);
+    expect(response.body).toEqual({ error: 'Invalid country filter' });
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
 });

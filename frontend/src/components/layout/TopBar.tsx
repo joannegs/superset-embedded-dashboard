@@ -1,6 +1,5 @@
 import type { Theme } from '../../hooks/useTheme'
 import type { View } from '../../types/navigation.types'
-import { Brand } from './Brand'
 import { NAV_ITEMS } from './navItems'
 import { ThemeToggle } from './ThemeToggle'
 
@@ -14,8 +13,7 @@ interface TopBarProps {
 export function TopBar({ theme, onToggleTheme, activeView, onNavigate }: TopBarProps) {
   return (
     <header className="border-b border-line bg-sidebar lg:hidden">
-      <div className="flex h-16 items-center justify-between gap-4 px-4 sm:px-8">
-        <Brand />
+      <div className="flex h-16 items-center justify-end gap-4 px-4 sm:px-8">
         <ThemeToggle theme={theme} onToggle={onToggleTheme} compact />
       </div>
 

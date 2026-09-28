@@ -35,7 +35,7 @@ function App() {
           {view === 'dashboard' ? (
             <>
               <IndicatorCards />
-              <EmbeddedDashboard />
+              <EmbeddedDashboard theme={theme} />
             </>
           ) : (
             <AboutView />

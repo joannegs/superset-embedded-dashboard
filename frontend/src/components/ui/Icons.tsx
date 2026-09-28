@@ -95,12 +95,3 @@ export function BookIcon(props: IconProps) {
     </BaseIcon>
   )
 }
-
-export function LogoMark(props: IconProps) {
-  return (
-    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" aria-hidden="true" {...props}>
-      <circle cx="24" cy="24" r="22" strokeWidth={1.2} />
-      <path d="M17 9v30M21 6v36M25 6v36" strokeWidth={1.2} />
-    </svg>
-  )
-}

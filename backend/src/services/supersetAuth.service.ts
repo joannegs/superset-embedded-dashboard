@@ -1,3 +1,4 @@
+import type { RlsCountry } from '../constants/rlsCountries.js';
 import {
   SupersetCsrfTokenResponse,
   SupersetGuestTokenResponse,
@@ -54,7 +55,7 @@ async function fetchCsrfToken(accessToken: string): Promise<{ csrfToken: string;
   return { csrfToken: data.result, cookie };
 }
 
-export async function fetchGuestToken(): Promise<string> {
+export async function fetchGuestToken(country?: RlsCountry): Promise<string> {
   const dashboardId = process.env.SUPERSET_DASHBOARD_ID;
   if (!dashboardId) {
     throw new Error('SUPERSET_DASHBOARD_ID is not set');
@@ -78,7 +79,7 @@ export async function fetchGuestToken(): Promise<string> {
         last_name: 'Guest',
       },
       resources: [{ type: 'dashboard', id: dashboardId }],
-      rls: [],
+      rls: country ? [{ clause: `country = '${country}'` }] : [],
     }),
   });
 

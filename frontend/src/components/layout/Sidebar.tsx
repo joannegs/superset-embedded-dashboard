@@ -1,6 +1,5 @@
 import type { Theme } from '../../hooks/useTheme'
 import type { View } from '../../types/navigation.types'
-import { Brand } from './Brand'
 import { NAV_ITEMS } from './navItems'
 import { ThemeToggle } from './ThemeToggle'
 
@@ -14,11 +13,7 @@ interface SidebarProps {
 export function Sidebar({ activeView, onNavigate, theme, onToggleTheme }: SidebarProps) {
   return (
     <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col overflow-hidden border-r border-line bg-sidebar lg:flex">
-      <div className="flex h-20 items-center px-7">
-        <Brand />
-      </div>
-
-      <nav className="mt-6 flex flex-col gap-1" aria-label="Main">
+      <nav className="mt-8 flex flex-col gap-1" aria-label="Main">
         {NAV_ITEMS.map(({ view, label, icon: Icon }) => {
           const active = view === activeView
           return (
@@ -56,12 +51,6 @@ export function Sidebar({ activeView, onNavigate, theme, onToggleTheme }: Sideba
         <circle cx="80" cy="260" r="150" />
         <ellipse cx="150" cy="230" rx="170" ry="110" />
       </svg>
-
-      <p className="relative mt-auto px-7 pb-10 text-xs leading-relaxed text-gold/80">
-        Better decisions
-        <br />
-        through data.
-      </p>
     </aside>
   )
 }

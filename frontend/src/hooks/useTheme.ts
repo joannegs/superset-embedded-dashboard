@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 export type Theme = 'dark' | 'light'
 
-const STORAGE_KEY = 'alchemy-theme'
+const STORAGE_KEY = 'theme'
 
 function readStoredTheme(): Theme {
   try {

@@ -10,9 +10,21 @@ export function AboutView() {
     <section className="max-w-3xl">
       <h2 className="font-serif text-3xl text-ink">About this project</h2>
       <p className="mt-4 leading-relaxed text-ink-muted">
-        A technical portfolio piece showing how an Apache Superset dashboard can be embedded in
-        a custom application. The browser never sees Superset credentials: the backend requests
+        A project on how an Apache Superset dashboard can be embedded in
+        a React application. The front does not see Superset credentials, the backend requests
         a short-lived guest token and the frontend uses it to render the dashboard.
+      </p>
+      <p className="mt-4 leading-relaxed text-ink-muted">
+        Data source:{' '}
+        <a
+          href="https://ourworldindata.org/research-and-development"
+          target="_blank"
+          rel="noreferrer"
+          className="text-gold underline hover:text-gold/80"
+        >
+          Our World in Data — Research and Development
+        </a>
+        .
       </p>
       <ul className="mt-8 divide-y divide-line rounded-md border border-line bg-surface">
         {STACK.map(({ name, role }) => (

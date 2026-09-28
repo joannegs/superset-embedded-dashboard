@@ -1,8 +1,10 @@
 import type { GuestTokenResponse } from '../types/dashboard.types'
 
-export async function fetchGuestToken(): Promise<string> {
+export async function fetchGuestToken(country?: string): Promise<string> {
   const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/guest-token`, {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ country }),
   })
 
   if (!response.ok) {
