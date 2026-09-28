@@ -1,10 +1,53 @@
 @import 'tailwindcss';
 
-@theme {
-  --color-brand: #4338ca;
-  --color-accent: #a3e635;
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+:root,
+[data-theme='dark'] {
+  --canvas: #15181d;
+  --sidebar: #111317;
+  --surface: #1c2026;
+  --surface-hover: #22272e;
+  --line: #2a2f37;
+  --ink: #ece7dd;
+  --ink-muted: #9b9d9f;
+  --gold: #c9a36a;
+  --positive: #5fb88a;
+  --panel: #f4f1ea;
+  --hero: #0b0d10;
+}
+
+[data-theme='light'] {
+  --canvas: #f3f0e9;
+  --sidebar: #ebe6dc;
+  --surface: #fbf9f5;
+  --surface-hover: #e3ddd1;
+  --line: #d9d2c4;
+  --ink: #1d2025;
+  --ink-muted: #6b6a66;
+  --gold: #9c7437;
+  --positive: #2f8a5c;
+  --panel: #ffffff;
+  --hero: #f1ece3;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-sidebar: var(--sidebar);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-gold: var(--gold);
+  --color-positive: var(--positive);
+  --color-panel: var(--panel);
+  --color-hero: var(--hero);
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', ui-serif, Georgia, serif;
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 antialiased;
+  @apply bg-canvas font-sans text-ink antialiased;
+  transition: background-color 200ms ease, color 200ms ease;
 }

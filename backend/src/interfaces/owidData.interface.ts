@@ -1,7 +1,3 @@
-export interface GuestTokenResponse {
-  token: string
-}
-
 export interface RndKpiSnapshot {
   year: number
   rndSpendingPctGdp: number

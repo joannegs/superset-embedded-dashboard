@@ -56,9 +56,13 @@ services:
     depends_on:
       superset:
         condition: service_healthy
-    env_file: ./backend/.env
+    env_file:
+      - .env
+      - ./backend/.env
     environment:
       SUPERSET_URL: http://superset:8088
+      POSTGRES_HOST: postgres
+      OWID_DB_NAME: ${POSTGRES_MULTIPLE_DATABASES}
     ports:
       - '3001:3001'
 

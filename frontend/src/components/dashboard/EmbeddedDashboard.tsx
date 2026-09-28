@@ -49,7 +49,7 @@ export function EmbeddedDashboard() {
       {status === 'error' && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center text-slate-600">
           <p>
-            Unable to load the dashboard. Please check whether the backend and Superset are
+            Unable to load the dashboard. Please check if the backend and Superset are
             running.
           </p>
           <Button onClick={() => setRetryKey((key) => key + 1)}>Tentar novamente</Button>

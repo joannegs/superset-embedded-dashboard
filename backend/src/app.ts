@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express from 'express';
 import guestTokenRouter from './routes/guestToken.route.js';
+import kpisRouter from './routes/kpis.route.js';
 
 const app = express();
 
@@ -12,5 +13,6 @@ app.get('/health', (_req, res) => {
 });
 
 app.use('/api/guest-token', guestTokenRouter);
+app.use('/api/kpis', kpisRouter);
 
 export default app;
