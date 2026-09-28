@@ -30,8 +30,11 @@ SOURCE_VALUE_COLUMN = {
 }
 
 
+REQUEST_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; superset-portfolio-seed/1.0)"}
+
+
 def load_indicator(name: str, url: str) -> pd.DataFrame:
-    df = pd.read_csv(url)
+    df = pd.read_csv(url, storage_options=REQUEST_HEADERS)
     df = df.rename(
         columns={
             "entity": "country",
@@ -45,7 +48,7 @@ def load_indicator(name: str, url: str) -> pd.DataFrame:
 def build_dataset() -> pd.DataFrame:
     merged: pd.DataFrame | None = None
     for name, url in OWID_INDICATORS.items():
-        print(f"Baixando {name}...")
+        print(f"Downloading {name}...")
         indicator_df = load_indicator(name, url)
         merged = (
             indicator_df
@@ -69,7 +72,7 @@ def main() -> None:
 
     dataset = build_dataset()
     dataset.to_sql("rnd_indicators", engine, if_exists="replace", index=False)
-    print(f"OK: {len(dataset)} linhas carregadas em rnd_indicators ({owid_db_name}).")
+    print(f"OK: {len(dataset)} rows loaded into rnd_indicators ({owid_db_name}).")
 
 
 if __name__ == "__main__":
