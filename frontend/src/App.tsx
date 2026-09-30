@@ -22,12 +22,12 @@ function App() {
       />
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <TopBar
+        {/* <TopBar
           theme={theme}
           onToggleTheme={toggleTheme}
           activeView={view}
           onNavigate={setView}
-        />
+        /> */}
 
         {view === 'dashboard' && <Hero />}
 
