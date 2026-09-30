@@ -1,4 +1,4 @@
-   # Global R&D Indicators — Superset Embedded Dashboard
+   # Global Research & Development Indicators — Superset Embedded Dashboard
 
    Project built as study on how Apache Superset can be embedded inside a React application without ever exposing Superset's own credentials to the browser.
 
