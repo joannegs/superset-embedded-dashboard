@@ -1,6 +1,6 @@
    # Global Research & Development Indicators — Superset Embedded Dashboard
 
-   Project built as study on how Apache Superset can be embedded inside a React application without ever exposing Superset's own credentials to the browser.
+   Project built as study on how Apache Superset can be embedded inside a React application without exposing Superset's own credentials to the browser.
 
    ![Dashboard overview](docs/screenshots/dashboard-overview.jpg)
    ![Dashboard charts](docs/screenshots/dashboard-charts.jpg)
