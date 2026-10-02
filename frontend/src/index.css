@@ -4,31 +4,29 @@
 
 :root,
 [data-theme='dark'] {
-  --canvas: #15181d;
-  --sidebar: #111317;
-  --surface: #1c2026;
-  --surface-hover: #22272e;
-  --line: #2a2f37;
-  --ink: #ece7dd;
-  --ink-muted: #9b9d9f;
-  --gold: #c9a36a;
-  --positive: #5fb88a;
-  --panel: #f4f1ea;
-  --hero: #0b0d10;
+  --canvas: #0f1012;
+  --sidebar: #0b0c0e;
+  --surface: #17181b;
+  --surface-hover: #1f2023;
+  --line: #27282c;
+  --ink: #e8e8ea;
+  --ink-muted: #8d8e92;
+  --accent: #5b8def;
+  --positive: #4fae7c;
+  --hero: #0b0c0e;
 }
 
 [data-theme='light'] {
-  --canvas: #f3f0e9;
-  --sidebar: #ebe6dc;
-  --surface: #fbf9f5;
-  --surface-hover: #e3ddd1;
-  --line: #d9d2c4;
-  --ink: #1d2025;
-  --ink-muted: #6b6a66;
-  --gold: #9c7437;
+  --canvas: #f5f1e8;
+  --sidebar: #ece6d8;
+  --surface: #faf7f0;
+  --surface-hover: #efe9db;
+  --line: #ddd4c0;
+  --ink: #1f1b16;
+  --ink-muted: #726a5c;
+  --accent: #3b63d6;
   --positive: #2f8a5c;
-  --panel: #ffffff;
-  --hero: #f1ece3;
+  --hero: #ece6d8;
 }
 
 @theme inline {
@@ -39,12 +37,10 @@
   --color-line: var(--line);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
-  --color-gold: var(--gold);
+  --color-accent: var(--accent);
   --color-positive: var(--positive);
-  --color-panel: var(--panel);
   --color-hero: var(--hero);
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Cormorant Garamond', ui-serif, Georgia, serif;
 }
 
 body {

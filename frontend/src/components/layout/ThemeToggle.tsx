@@ -18,7 +18,7 @@ export function ThemeToggle({ theme, onToggle, compact = false }: ThemeTogglePro
         type="button"
         onClick={onToggle}
         aria-label={`Switch to ${label.toLowerCase()}`}
-        className="cursor-pointer rounded-full p-2 text-ink-muted transition-colors hover:bg-surface hover:text-gold"
+        className="cursor-pointer rounded-full p-2 text-ink-muted transition-colors hover:bg-surface hover:text-accent"
       >
         <Icon className="h-5 w-5" />
       </button>

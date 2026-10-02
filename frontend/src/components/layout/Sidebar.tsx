@@ -24,7 +24,7 @@ export function Sidebar({ activeView, onNavigate, theme, onToggleTheme }: Sideba
               aria-current={active ? 'page' : undefined}
               className={`flex cursor-pointer items-center gap-3 border-l-2 px-7 py-3 text-sm transition-colors ${
                 active
-                  ? 'border-gold bg-surface-hover text-gold'
+                  ? 'border-accent bg-surface-hover text-accent'
                   : 'border-transparent text-ink-muted hover:bg-surface hover:text-ink'
               }`}
             >
@@ -38,19 +38,6 @@ export function Sidebar({ activeView, onNavigate, theme, onToggleTheme }: Sideba
       <div className="mx-7 my-6 border-t border-line" />
 
       <ThemeToggle theme={theme} onToggle={onToggleTheme} />
-
-      <svg
-        className="pointer-events-none absolute -left-24 bottom-10 h-96 w-80 text-gold/40"
-        viewBox="0 0 320 384"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1}
-        aria-hidden="true"
-      >
-        <circle cx="120" cy="190" r="130" />
-        <circle cx="80" cy="260" r="150" />
-        <ellipse cx="150" cy="230" rx="170" ry="110" />
-      </svg>
     </aside>
   )
 }

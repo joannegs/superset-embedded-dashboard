@@ -15,10 +15,10 @@ interface ButtonAsLink extends AnchorHTMLAttributes<HTMLAnchorElement> {
 type ButtonProps = ButtonAsButton | ButtonAsLink
 
 const VARIANT_CLASSES: Record<Variant, string> = {
-  primary: 'bg-gold text-canvas hover:bg-gold/90 focus-visible:outline-gold',
+  primary: 'bg-accent text-canvas hover:bg-accent/90 focus-visible:outline-accent',
   secondary:
-    'bg-surface text-ink border border-line hover:bg-surface-hover focus-visible:outline-gold',
-  ghost: 'bg-transparent text-ink-muted hover:bg-surface focus-visible:outline-gold',
+    'bg-surface text-ink border border-line hover:bg-surface-hover focus-visible:outline-accent',
+  ghost: 'bg-transparent text-ink-muted hover:bg-surface focus-visible:outline-accent',
 }
 
 const BASE_CLASSES =

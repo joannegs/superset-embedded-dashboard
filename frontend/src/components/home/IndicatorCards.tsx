@@ -74,10 +74,10 @@ export function IndicatorCards() {
       {INDICATORS.map(({ label, unit, description, icon: Icon, formatValue }) => (
         <li key={label} className="rounded-md border border-line bg-surface p-5">
           <div className="flex items-center gap-4">
-            <Icon className="h-7 w-7 text-gold" />
+            <Icon className="h-7 w-7 text-accent" />
             <span className="text-sm text-ink">{label}</span>
           </div>
-          <p className="mt-4 font-serif text-3xl text-ink">
+          <p className="mt-4 text-2xl font-semibold text-ink">
             {status === 'ready' && snapshot ? formatValue(snapshot) : status === 'error' ? '—' : '···'}
             <span className="ml-2 text-base text-ink-muted">{unit}</span>
           </p>
